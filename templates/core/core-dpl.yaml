@@ -85,8 +85,9 @@ spec:
               secretKeyRef:
                 name: "{{ template "harbor.jobservice" . }}"
                 key: JOBSERVICE_SECRET
-{{- if .Values.core.containerEnv }}
-{{ toYaml .Values.core.containerEnv | indent 10 }}
+{{- if .Values.core.configureUserSettings }}
+          - name: CONFIG_OVERWRITE_JSON
+            value: {{ .Values.core.containerEnv  }}
 {{- end }}
          {{- if .Values.internalTLS.enabled }}
           - name: INTERNAL_TLS_ENABLED
