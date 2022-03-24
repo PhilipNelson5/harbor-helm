@@ -450,7 +450,7 @@ core:
   affinity: {}
   ## Additional deployment annotations
   podAnnotations: {}
-  ## Additional environment variables
+  ## User settings configuration json string
   configureUserSettings:
   # Secret is used when core server communicates with other components.
   # If a secret key is not specified, Helm will generate one.
