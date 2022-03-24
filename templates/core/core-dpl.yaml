@@ -87,7 +87,10 @@ spec:
                 key: JOBSERVICE_SECRET
 {{- if .Values.core.configureUserSettings }}
           - name: CONFIG_OVERWRITE_JSON
-            value: {{ .Values.core.configureUserSettings }}
+            valueFrom:
+              secretKeyRef:
+                name: "{{ template "harbor.core" . }}"
+                key: CONFIG_OVERWRITE_JSON
 {{- end }}
          {{- if .Values.internalTLS.enabled }}
           - name: INTERNAL_TLS_ENABLED
